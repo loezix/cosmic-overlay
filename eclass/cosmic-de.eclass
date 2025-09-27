@@ -38,7 +38,7 @@ RUST_MIN_VER="1.85.1"
 # See description in cargo.eclass from main tree.
 # This is set to allow fine-tuning of which functions we use, and when.
 CARGO_OPTIONAL=1
-inherit cargo xdg
+inherit eutils cargo xdg
 
 # @ECLASS_VARIABLE: BDEPEND
 # @OUTPUT_VARIABLE
