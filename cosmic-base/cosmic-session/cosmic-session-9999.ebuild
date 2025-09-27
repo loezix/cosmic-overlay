@@ -47,7 +47,7 @@ RDEPEND+="
 
 src_prepare() {
 	if use elogind; then
-		eapply "${FILESDIR}/backport-137.patch"
+		eapply "${FILESDIR}/backport-131.patch"
 		eapply "${FILESDIR}/backport-137.patch"
 		eapply "${FILESDIR}/no_journald-systemctl.patch"
 	fi
