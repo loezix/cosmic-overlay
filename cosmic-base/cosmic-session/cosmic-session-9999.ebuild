@@ -46,11 +46,7 @@ RDEPEND+="
 "
 
 src_prepare() {
-	if use elogind; then
-		eapply "${FILESDIR}/backport-131.patch"
-		eapply "${FILESDIR}/backport-137.patch"
-		eapply "${FILESDIR}/no_journald-systemctl.patch"
-	fi
+	use elogind && eapply "${FILESDIR}/no_journald-systemctl.patch"
 	cosmic-de_src_prepare
 
 	# patch for dconf profile as done in justfile upstream
