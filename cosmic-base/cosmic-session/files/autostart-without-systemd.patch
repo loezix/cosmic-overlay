@@ -1,0 +1,32 @@
+From 9c5d36d6425f76a58002de81bdd814135456a449 Mon Sep 17 00:00:00 2001
+From: loezix <loezix@proton.me>
+Date: Sat, 27 Sep 2025 20:59:51 -0300
+Subject: [PATCH] autostart/systemd-dep
+
+---
+ src/main.rs | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/main.rs b/src/main.rs
+index a6716af..5baf54d 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -31,7 +31,14 @@ use std::{
+ 	sync::Arc,
+ };
+ #[cfg(feature = "systemd")]
+-use systemd::{get_systemd_env, is_systemd_used, spawn_scope};
++use systemd::{get_systemd_env, spawn_scope};
++#[cfg(feature = "systemd")]
++use systemd::is_systemd_used;
++
++#[cfg(not(feature = "systemd"))]
++fn is_systemd_used() -> &'static bool {
++    &false
++}
+ use tokio::{
+ 	net::UnixStream,
+ 	sync::{
+-- 
+2.51.0
+
